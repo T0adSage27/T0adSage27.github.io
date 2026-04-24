@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO метатеги -->
+    <title>SEO-специалист | Аудит и продвижение сайтов</title>
+    <meta name="description" content="Профессиональный SEO-аудит, внутренняя оптимизация и стратегия продвижения. Бесплатная консультация. Реальные кейсы и прозрачные отчеты.">
+    <meta name="keywords" content="SEO, SEO-специалист, продвижение сайтов, аудит сайта, раскрутка сайта, консультация SEO">
+    <meta name="author" content="Имя SEO-специалиста">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph для соцсетей -->
+    <meta property="og:title" content="SEO-специалист | Аудит и продвижение сайтов">
+    <meta property="og:description" content="Выведи свой сайт в топ-10. Бесплатная диагностика и стратегия.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ваш-сайт.ru">
+    <meta property="og:image" content="https://ваш-сайт.ru/og-image.jpg">
+    
+    <!-- Canonical ссылка (замените на свой домен) -->
+    <link rel="canonical" href="https://ваш-сайт.ru">
+    
+    <!-- Favicon (можно заменить) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔍%3C/text%3E%3C/svg%3E">
+    
+    <style>
+        /* ----- Базовые сбросы и переменные ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2c3e66;
+            --primary-dark: #1a2a44;
+            --accent: #e67e22;
+            --accent-hover: #d35400;
+            --gray-light: #f8f9fa;
+            --gray: #6c757d;
+            --dark: #212529;
+            --border: #dee2e6;
+            --shadow: 0 0.5rem 1rem rgba(0,0,0,0.05);
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: var(--dark);
+            background: white;
+            scroll-behavior: smooth;
+        }
+        
+        /* Контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Типографика */
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; border-left: 4px solid var(--accent); padding-left: 1rem; }
+        h3 { font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--primary); }
+        
+        @media (min-width: 768px) {
+            h1 { font-size: 3.2rem; }
+            h2 { font-size: 2.2rem; }
+        }
+        
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover { color: var(--accent-hover); }
+        
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn:hover {
+            background: var(--accent-hover);
+            color: white;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: white;
+        }
+        
+        /* Шапка */
+        .header {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .logo span {
+            color: var(--accent);
+        }
+        .nav a {
+            margin-left: 1.5rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        .nav a:hover { color: var(--accent); }
+        
+        /* Секции */
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .bg-light {
+            background: var(--gray-light);
+        }
+        
+        /* Герой */
+        .hero {
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9edf2 100%);
+            padding: 5rem 0;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Услуги */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s;
+            border: 1px solid var(--border);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Кейсы */
+        .cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .case-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .case-img-placeholder {
+            background: var(--primary);
+            color: white;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .case-content {
+            padding: 1.2rem;
+        }
+        .case-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        /* Контактная форма */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        /* Подвал */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            background: var(--primary-dark);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: #ffb366;
+        }
+        .rating {
+            display: inline-flex;
+            gap: 0.2rem;
+            margin-left: 0.3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav a { margin-left: 1rem; }
+            section { padding: 3rem 0; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="logo">SEO<span>Pro</span></div>
+        <nav class="nav">
+            <a href="#services">Услуги</a>
+            <a href="#cases">Кейсы</a>
+            <a href="#contact">Контакты</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero-блок -->
+    <section class="hero">
+        <div class="container">
+            <h1>SEO-специалист <br>Выведу ваш сайт в ТОП</h1>
+            <p>Аудит, стратегия, внутренняя оптимизация и рост трафика. Более 5 лет опыта и 20+ успешных проектов.</p>
+            <a href="#contact" class="btn">Заказать бесплатный аудит</a>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section id="services">
+        <div class="container">
+            <h2>Что я делаю</h2>
+            <div class="services-grid">
+                <article class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>SEO-аудит сайтов</h3>
+                    <p>Технический анализ, проверка индексации, юзабилити, дубли страниц, ошибки robots.txt и sitemap.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Стратегия продвижения</h3>
+                    <p>Сбор семантического ядра, анализ конкурентов, план по наращиванию ссылочной массы и контента.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">🧩</div>
+                    <h3>On-page оптимизация</h3>
+                    <p>Правка метатегов, структуры URL, внутренняя перелинковка, микроразметка и улучшение поведенческих.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Кейсы / Примеры работ -->
+    <section id="cases" class="bg-light">
+        <div class="container">
+            <h2>Результаты моих клиентов</h2>
+            <div class="cases">
+                <article class="case-item">
+                    <div class="case-img-placeholder" aria-label="Кейс интернет-магазина" role="img">🛍️</div>
+                    <div class="case-content">
+                        <h3>Интернет-магазин мебели</h3>
+                        <p>Трафик вырос на <strong>340%</strong> за 6 месяцев. Топ-10 по 78 ключам.</p>
+                        <div class="case-stats">📈 +340% трафика &nbsp;|&nbsp; 💰 +127% продаж</div>
+                    </div>
+                </article>
+                <article class="case-item">
+                    <div class="case-img-placeholder" aria-label="Кейс строительной компании">🏗️</div>
+                    <div class="case-content">
+                        <h3>Строительная компания</h3>
+                        <p>Первое место по запросу "строительство домов под ключ". Заявки +215%.</p>
+                        <div class="case-stats">🏆 ТОП-1 Яндекс &nbsp;|&nbsp; 📞 +215% лидов</div>
+                    </div>
+                </article>
+                <article class="case-item">
+                    <div class="case-img-placeholder" aria-label="Кейс блога">📝</div>
+                    <div class="case-content">
+                        <h3>Информационный портал</h3>
+                        <p>Органический трафик вырос с 500 до 8900 посетителей в сутки за 4 месяца.</p>
+                        <div class="case-stats">📊 +1680% визитов</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контактная форма + призыв -->
+    <section id="contact">
+        <div class="container">
+            <h2>Получите бесплатный SEO-аудит</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Оставьте заявку — я проанализирую ваш сайт и дам первые рекомендации.</p>
+            <form class="contact-form" action="#" method="post">
+                <input type="text" name="name" placeholder="Ваше имя" required aria-label="Имя">
+                <input type="email" name="email" placeholder="E-mail" required aria-label="Email">
+                <input type="url" name="website" placeholder="Адрес сайта" required aria-label="Сайт">
+                <textarea rows="4" name="message" placeholder="Опишите задачу кратко..."></textarea>
+                <button type="submit" class="btn">Отправить заявку</button>
+                <p style="font-size: 0.8rem; margin-top: 1rem;">Нажимая на кнопку, вы соглашаетесь с <a href="#">политикой конфиденциальности</a>.</p>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2025 SEO-специалист. Все права защищены. 
+        <br>Связь: <a href="mailto:seo@example.com">seo@example.com</a> | Telegram: @seo_master</p>
+        <!-- schema.org микроразметка (JSON-LD) -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "SEO-специалист",
+            "url": "https://ваш-сайт.ru",
+            "logo": "https://ваш-сайт.ru/logo.png",
+            "description": "Профессиональный SEO-аудит и продвижение сайтов. Бесплатная консультация.",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Москва",
+                "addressCountry": "RU"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "email": "seo@example.com"
+            },
+            "sameAs": [
+                "https://t.me/seo_master",
+                "https://vk.com/seo_expert"
+            ]
+        }
+        </script>
+    </div>
+</footer>
+
+<!-- Небольшая заметка для консоли (можно удалить) -->
+<script>
+    // Пример: при отправке формы (заглушка, чтобы не перезагружалась)
+    document.querySelector('.contact-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Спасибо! Это демо-лендинг. В реальном проекте форма отправлялась бы на сервер.');
+    });
+</script>
+</body>
+</html>
